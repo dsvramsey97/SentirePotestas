@@ -9,15 +9,34 @@
 
 
 <ImageButton
-    android:layout_width="60dp"
-    android:layout_height="60dp"
+    android:layout_width="165dp"
+    android:layout_height="120dp"
     android:src="@drawable/accelerometer"
     android:id="@+id/acceloimg"
     android:onClick="acceloclick"
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
-    android:layout_marginLeft="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp" />
+    android:layout_marginTop="10dp"
+    android:background="#ffffffff" />
+<ImageButton
+    android:layout_width="165dp"
+    android:layout_height="120dp"
+    android:src="@drawable/gyro"
+    android:id="@+id/gyroimg"
+    android:onClick="gyronclick"
+    android:background="#ffffffff"
+    android:layout_alignTop="@+id/acceloimg"
+    android:layout_alignRight="@+id/proximg"
+    android:layout_alignEnd="@+id/proximg" />
+<ImageButton
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:src="@drawable/icon"
+    android:onClick="sproxyclick"
+    android:id="@+id/proximg"
+    android:background="#ffffffff"
+    android:layout_centerVertical="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true" />
 </RelativeLayout>

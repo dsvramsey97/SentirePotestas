@@ -9,7 +9,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Home"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +20,38 @@
         <activity
             android:name=".Accelerometer"
             android:label="@string/title_activity_accelerometer"
-            android:parentActivityName=".Home" >
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="adinfinitum.sentirepotestas.Home" />
+        </activity>
+        <activity
+            android:name=".ProximitySentire"
+            android:label="@string/title_activity_proximity_sentire"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="adinfinitum.sentirepotestas.Home" />
+        </activity>
+        <activity
+            android:name=".GyroSentire"
+            android:label="@string/title_activity_gyro_sentire"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="adinfinitum.sentirepotestas.Home" />
+        </activity>
+        <activity
+            android:name=".AcceloAnime"
+            android:label="@string/title_activity_accelo_anime"
+            android:parentActivityName=".Accelerometer"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="adinfinitum.sentirepotestas.Accelerometer" />
         </activity>
     </application>
 

@@ -4,14 +4,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="adinfinitum.sentirepotestas.Accelerometer">
+    tools:context="adinfinitum.sentirepotestas.GyroSentire">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Accelerometer : "
-        android:id="@+id/Accelo"
+        android:text="Gyrometer :  "
+        android:id="@+id/gyro"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -22,20 +22,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/AcceloX"
+        android:id="@+id/GyroX"
         android:text="scbcbb"
         android:textColor="#ff000000"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/Accelo"
+        android:layout_below="@+id/gyro"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/AcceloY"
-        android:layout_toRightOf="@+id/AcceloX"
-        android:layout_below="@+id/Accelo"
+        android:id="@+id/GyroY"
+        android:layout_toRightOf="@+id/GyroX"
+        android:layout_below="@+id/gyro"
         android:layout_marginLeft="20dp"
         android:text="scbhkbck"
         android:textColor="#ff000000"
@@ -45,15 +45,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/AcceloZ"
-        android:layout_toRightOf="@+id/AcceloY"
+        android:id="@+id/GyroZ"
+        android:layout_toRightOf="@+id/GyroY"
         android:layout_marginLeft="20dp"
         android:text="dcbzcbzx"
         android:textColor="#ff000000"
-        android:layout_below="@+id/Accelo"
+        android:layout_below="@+id/gyro"
         />
-
-
     <com.jjoe64.graphview.GraphView
         android:layout_width="320dp"
         android:layout_height="200dp"
@@ -63,29 +61,18 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/AcceloX"
+        android:layout_below="@+id/GyroX"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="70dp"
-        />
 
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Go Back"
-        android:id="@+id/acceloback"
-        android:onClick="accgoback"
-        android:layout_alignTop="@+id/animebutton"
-        android:layout_toRightOf="@+id/AcceloX"
-        android:layout_toEndOf="@+id/AcceloX" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Animation"
-        android:id="@+id/animebutton"
-        android:onClick="animeview"
+        android:id="@+id/gyroback"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Accelo"
-        android:layout_toEndOf="@+id/Accelo" />
+        android:layout_centerHorizontal="true"
+        android:onClick="gyrogoback" />
+
 
 </RelativeLayout>

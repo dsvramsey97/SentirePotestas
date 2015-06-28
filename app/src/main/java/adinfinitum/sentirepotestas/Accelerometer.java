@@ -1,6 +1,5 @@
 package adinfinitum.sentirepotestas;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,17 +8,17 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 
-public class Accelerometer extends Activity implements SensorEventListener{
+public class Accelerometer extends ActionBarActivity implements SensorEventListener{
         SensorManager sam;
         TextView SacciloX,SacciloY,SacciloZ;
         private GraphView graph ;
@@ -27,21 +26,15 @@ public class Accelerometer extends Activity implements SensorEventListener{
         LineGraphSeries seriesy = new LineGraphSeries<>(new DataPoint[]{});
         LineGraphSeries seriesz = new LineGraphSeries<>(new DataPoint[]{});
         Integer t = 0;
-        CharSequence text = "THE SENSOR IS NOT AVAILABLE. PLEASE CHOOSE ANOTHER ONE";
-        Context context;
+        float arr[] = {0,0,0};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accelerometer);
         sam = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-        if (sam.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null)
-        {
-            Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-            toast.show();
-            Intent i;
-            i = new Intent(Accelerometer.this,Home.class);
-            startActivity(i);
-        }
+
 
         SacciloX = (TextView)findViewById(R.id.AcceloX);
         SacciloY = (TextView)findViewById(R.id.AcceloY);
@@ -52,7 +45,6 @@ public class Accelerometer extends Activity implements SensorEventListener{
         graph.addSeries(seriesz);
         graph.getViewport().setMaxX(30);
         graph.getViewport().setMinX(0);
-        graph.getViewport().setScalable(true);
         graph.getViewport().setScrollable(true);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setBackgroundColor(Color.BLUE);
@@ -64,8 +56,19 @@ public class Accelerometer extends Activity implements SensorEventListener{
         graph.getViewport().setMaxY(20);
     }
 
+    public void accgoback(View view)
+    {
+        Intent acc;
+        acc = new Intent(Accelerometer.this,Home.class);
 
-    @Override
+        startActivity(acc);
+    }
+    public void animeview(View view)
+    {
+        Intent anime = new Intent(Accelerometer.this,AcceloAnime.class);
+        startActivity(anime);
+    }
+  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_accelerometer, menu);
@@ -93,6 +96,9 @@ public class Accelerometer extends Activity implements SensorEventListener{
         SacciloX.setText("X : " + event.values[0]);
         SacciloY.setText("Y : " + event.values[1]);
         SacciloZ.setText("Z : " + event.values[2]);
+        arr[0] = event.values[0];
+        arr[1] = event.values[1];
+        arr[2] = event.values[2];
         seriesx.appendData(new DataPoint(t, event.values[0]), true, 10000);
         seriesy.appendData(new DataPoint(t,event.values[1]),true,10000);
         seriesz.appendData(new DataPoint(t,event.values[2]),true,10000);
@@ -124,4 +130,5 @@ public class Accelerometer extends Activity implements SensorEventListener{
         sam.unregisterListener(this);
 
     }
+
 }

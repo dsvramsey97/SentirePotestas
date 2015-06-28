@@ -1,6 +1,9 @@
 package adinfinitum.sentirepotestas;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,25 +12,66 @@ import android.view.View;
 
 
 
-public class Home extends ActionBarActivity{
+public class Home extends ActionBarActivity {
 
+
+
+
+    SensorManager s;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        s = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     }
-
     public void acceloclick(View view)
     {
-        Intent intent;
-        intent = new Intent(Home.this,Accelerometer.class);
-        startActivity(intent);
+        if(s.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)!=null)
+        {
+            Intent intent;
+            intent = new Intent(Home.this, Accelerometer.class);
+            startActivity(intent);
+        }
+        else
+        {
+            System.exit(1);
+
+        }
+
     }
 
+    public void sproxyclick(View view)
+    {
+        if(s.getDefaultSensor(Sensor.TYPE_PROXIMITY)!=null)
+        {
+            Intent intent;
+            intent = new Intent(Home.this, ProximitySentire.class);
+            startActivity(intent);
+        }
+        else
+        {
+
+            System.exit(1);
+
+
+        }
+    }
+    public void gyronclick(View view)
+    {
+        if(s.getDefaultSensor(Sensor.TYPE_GYROSCOPE)!=null)
+        {
+            Intent intent;
+            intent = new Intent(Home.this, GyroSentire.class);
+            startActivity(intent);
+        }
+        else
+        {
+         System.exit(1);
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
